@@ -6,10 +6,18 @@ function createNote()
     title=document.createElement("h2")
     title.innerHTML=note.title;
     newDiv.appendChild(title);
+
     content=document.createElement("p");
     content.innerHTML=note.content;
     newDiv.appendChild(content);
+
+    img=document.createElement("img")
+    img.src="img/delete.png";
+    newDiv.appendChild(img);
+
     notes.appendChild(newDiv);
+
+    return newDiv;
 }
 
 function editTitle(event)
@@ -30,12 +38,17 @@ function editContent(event)
 
 function saveTitle(event){
     if (event.key=="Enter"){
-        title.innerHTML=event.target.value;
+        event.target.parentNode.innerHTML=event.target.value;
     }
 }
 
 function saveContent(event){
     if (event.key=="Enter"){
-        content.innerHTML=event.target.value;
+        event.target.parentNode.innerHTML=event.target.value;
     }
+}
+
+function deleteNote(event){
+    note=event.target.parentNode;
+    note.parentNode.removeChild(note);
 }
